@@ -1,0 +1,1616 @@
+
+
+/* ============================
+   GLOBAL RESET + BASICS
+   ============================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  background: none;
+  color: #fff;
+}
+/* =====================
+   Animated Login BG
+   ===================== */
+body {
+    background: linear-gradient(135deg, #0e0e14, #161622, #0e0e14);
+    background-size: 300% 300%;
+    animation: bgShift 14s ease infinite;
+
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.hidden {
+  display: none !important;
+}
+
+/* LOGIN PAGE — Dedicated button class */
+.login-btn-primary {
+  background: linear-gradient(135deg, #8b5cff, #6f4bdb);
+  border: none;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 14px 28px;
+  width: 100%;
+  border-radius: 14px;
+
+  box-shadow:
+    0 0 16px rgba(139, 92, 255, 0.45),
+    0 10px 25px rgba(139, 92, 255, 0.25);
+
+  transition: 0.25s ease;
+}
+
+.login-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 22px rgba(139, 92, 255, 0.55),
+    0 12px 28px rgba(139, 92, 255, 0.35);
+}
+
+
+/* ============================================
+   HEADER — Premium Glass + Neon Edge + Clean Logo
+   ============================================ */
+
+header {
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 32px;
+
+  position: relative;
+
+  background: rgba(10, 10, 20, 0.75);
+  backdrop-filter: blur(12px);
+
+  z-index: 100;
+
+  flex-shrink: 0;
+}
+
+/* Horizontal gradient separator */
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #8a52ff, #5a8bff);
+  opacity: 0.65;
+  filter: blur(1px);
+}
+
+/* LEFT CONTAINER (logo + title) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Perfect circle emblem */
+.app-logo {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  clip-path: circle(50%);
+  box-shadow: none !important;
+  filter: none !important;            /* Remove all glow */
+}
+
+/* FuelMate title */
+.app-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+
+  background: linear-gradient(
+    135deg,
+    #eae1ff,
+    #c39eff 40%,
+    #8a52ff 80%
+  );
+
+  /* Standard */
+  background-clip: text;
+
+  /* Safari / Chrome */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Fallback */
+  color: transparent;
+
+  filter:
+    drop-shadow(0 0 8px rgba(139, 92, 255, 0.50))
+    drop-shadow(0 0 18px rgba(139, 92, 255, 0.30));
+}
+
+
+/* ============================
+   GLOBAL BACK BUTTON
+   ============================ */
+
+.screen-back-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  background: #222;
+  color: #ddd;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.screen-back-btn:hover {
+  background: #333;
+}
+
+/* ============================
+   FUEL SCREEN (LEFT LAYOUT)
+   ============================ */
+
+/* ============================================
+   FUEL SCREEN — Hybrid-C Premium Styling
+   (Matches: Vehicle Wizard Left Box)
+   ============================================ */
+
+   #wizardSummary {
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+}
+
+.fuel-layout {
+  position: relative;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fuel-box {
+  width: 480px;
+  padding: 48px 40px;
+  border-radius: 22px;
+
+  /* Same glass aesthetic as wizard-steps-card */
+  background: rgba(16, 16, 26, 0.68);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(110, 130, 255, 0.48);
+  box-shadow:
+    0 0 26px rgba(120, 140, 255, 0.25),
+    0 14px 38px rgba(0,0,0,0.65),
+    inset 0 0 14px rgba(150, 160, 255, 0.08);
+}
+
+/* Header — H1 matching wizard */
+.fuel-box h2 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+
+/* Light subtitle (optional: remove if unwanted) */
+.fuel-box p {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 26px;
+}
+
+/* Input fields — EXACT match of wizard-select */
+#fuelInputLitres {
+  width: 100%;
+  padding: 15px 16px;
+  font-size: 16px;
+  border-radius: 12px;
+
+  background: #1d1d2b;
+  border: 1px solid #373757;
+  color: white;
+  transition: 0.22s ease;
+}
+
+#fuelInputLitres:focus {
+  border-color: #98a8ff;
+  background: #26263d;
+  box-shadow: 0 0 14px rgba(160, 180, 255, 0.45);
+}
+
+/* Continue button — same as wizard-confirm-btn */
+#fuelContinueBtn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* ============================================
+   FUEL MODE TOGGLE
+   ============================================ */
+
+.fuel-mode-toggle {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 4px;
+  box-sizing: border-box;
+
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.fuel-mode-btn {
+  flex: 1;
+  width: 50%;
+
+  padding: 12px 16px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fuel-mode-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.fuel-mode-btn.active {
+  background: #8a52ff;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(139, 92, 255, 0.35);
+}
+
+
+/* ============================================
+   FUEL INPUT GROUPS
+   ============================================ */
+
+#litresFuelInputGroup,
+#rupeesFuelInputGroup {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#litresFuelInputGroup label,
+#rupeesFuelInputGroup label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+
+/* ============================================
+   FUEL INPUTS
+   ============================================ */
+
+#fuelInputLitres,
+#fuelInputRupees,
+#fuelPricePerLitre {
+  display: block;
+
+  width: 100%;
+  height: 52px;
+
+  padding: 0 16px;
+
+  box-sizing: border-box;
+
+  border-radius: 12px;
+  border: 1px solid #373757;
+
+  background: #1d1d2b;
+  color: #ffffff;
+
+  font-size: 16px;
+
+  margin-bottom: 18px;
+}
+
+#fuelInputLitres:focus,
+#fuelInputRupees:focus,
+#fuelPricePerLitre:focus {
+  outline: none;
+
+  border-color: #98a8ff;
+
+  background: #26263d;
+
+  box-shadow: 0 0 14px rgba(160, 180, 255, 0.35);
+}
+
+
+/* ============================================
+   RUPEES MODE SPACING
+   ============================================ */
+
+#rupeesFuelInputGroup label:not(:first-child) {
+  margin-top: 2px;
+}
+/* ---------- Metrics panel (right) ---------- */
+
+.dash-metrics-card {
+  padding: 32px 30px 30px;
+  border-radius: 20px;
+
+  background: radial-gradient(circle at top left, #211932 0%, #14141f 40%, #0d0d14 100%);
+  border: 1px solid rgba(139, 92, 255, 0.55);
+  box-shadow:
+    0 12px 38px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(139, 92, 255, 0.38);
+}
+
+.dash-metrics-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+
+
+.metrics-grid span {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.metrics-grid strong {
+  font-size: 18px;
+}
+
+/* When metrics are hidden, ride card stays perfectly centered */
+@media (max-width: 960px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* =====================================================
+   HYBRID-C LOGIN LAYOUT (Premium Glow Variant)
+   ===================================================== */
+
+.login-layout {
+  min-height: calc(100vh - 150px);
+  display: flex;
+  justify-content: center;
+
+  /* REMOVE vertical centering */
+  align-items: flex-start;
+  padding-top: 90px;     /* moves whole login area upward */
+}
+
+.login-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 80%;
+  max-width: 1100px;
+  gap: 40px;
+  align-items: center;
+}
+
+/* LEFT TEXT */
+.login-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.login-left-content {
+  color: white;
+}
+
+.login-tagline {
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.login-subtitle {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #cfcfe8;
+}
+
+/* RIGHT LOGIN BOX */
+.login-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  background: rgba(21, 21, 29, 0.85);
+  border-radius: 18px;
+
+  padding: 34px 32px;
+  width: 100%;
+  max-width: 380px;
+
+  /* Signature Hybrid-C Glow */
+  border: 1px solid rgba(139, 92, 255, 0.25);
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.65),
+    0 0 22px rgba(139, 92, 255, 0.18),
+    0 0 6px rgba(139, 92, 255, 0.30) inset;
+
+  backdrop-filter: blur(6px);
+}
+
+.login-heading {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 18px;
+}
+
+.form-row label {
+  font-size: 14px;
+  color: #cfcfe8;
+}
+
+.form-row input {
+  background: rgba(27, 27, 36, 0.85);
+  border: 1px solid rgba(80, 80, 105, 0.5);
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  transition: 0.25s;
+}
+
+.form-row input:focus {
+  border-color: #a78bff;
+  box-shadow:
+    0 0 12px rgba(139, 92, 255, 0.45),
+    0 0 6px rgba(139, 92, 255, 0.35) inset;
+}
+
+/* Remember Me */
+.remember-container {
+  margin-bottom: 15px;
+}
+
+.remember-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.remember-label span {
+  color: #cfcfe8;
+  font-size: 14px;
+}
+
+/* Button */
+.btn-primary {
+  background: linear-gradient(135deg, #8b5cff, #6f4bdb);
+  border: none;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 14px 28px;
+  width: 240px;
+  border-radius: 14px;
+
+  box-shadow:
+    0 0 16px rgba(139, 92, 255, 0.45),
+    0 10px 25px rgba(139, 92, 255, 0.25);
+
+  transition: 0.25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 22px rgba(139, 92, 255, 0.55),
+    0 12px 28px rgba(139, 92, 255, 0.35);
+}
+.btn-secondary {
+  background: rgba(40, 40, 60, 0.85);
+  border: 1px solid rgba(120, 120, 160, 0.35);
+  color: #e8e8ff;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 14px 28px;
+  width: 240px;
+  border-radius: 14px;
+
+  transition: 0.25s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(55, 55, 90, 0.85);
+  border-color: rgba(160, 160, 220, 0.45);
+}
+
+.link-forgot {
+  display: block;
+  margin-top: 14px;
+  font-size: 14px;
+  text-align: center;
+  color: #b9a4ff;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.link-forgot:hover {
+  color: #d7c8ff;
+}
+
+/* Small helper text */
+.login-note {
+  margin-top: 14px;
+  text-align: center;
+  color: #777;
+  font-size: 13px;
+}
+
+/* Subtle responsive improvement */
+@media (max-width: 900px) {
+  .login-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .login-left {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* =====================================================
+   HYBRID-C WIZARD — Step Box + Summary Box (Final)
+   ===================================================== */
+
+/* Main wizard area */
+#vehicleWizard {
+
+    width:100%;
+
+    min-height:calc(100vh - 100px);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding-top:20px;
+
+    background:linear-gradient(
+        180deg,
+        #05040b 0%,
+        #07081a 40%,
+        #020208 100%
+    );
+
+}
+
+/* 2-column layout */
+.wizard-grid {
+  display: grid;
+  grid-template-columns: 500px 350px;
+  gap: 80px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+   /* ===========================================
+   WIZARD — SUMMARY CARD RIGHT POSITION
+   =========================================== */
+
+
+
+/* LEFT BOX — FINAL FIXED VERSION */
+
+.wizard-steps-card {
+  width: 500px;
+  min-height: 500px;
+  padding: 48px 38px;             /* More spacious */
+  border-radius: 22px;
+
+  background: rgba(16, 16, 26, 0.70);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(110, 130, 255, 0.48);
+  box-shadow:
+    0 0 28px rgba(120, 140, 255, 0.28),
+    0 14px 38px rgba(0, 0, 0, 0.65),
+    inset 0 0 15px rgba(150, 160, 255, 0.10);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Heading */
+.wizard-title {
+  font-size: 32px;         /* Bigger */
+  font-weight: 700;
+  margin-bottom: 42px;     /* Clear section gap */
+  letter-spacing: 0.5px;
+}
+
+/* Remove subtitle entirely */
+.wizard-subtitle {
+  display: none !important;
+}
+
+/* Each input group */
+.wizard-step {
+  margin-bottom: 40px;     /* More breathing room */
+}
+
+/* Increased spacing between Brand → Model → Year */
+.wizard-step {
+  margin-bottom: 40px;   /* balanced vertical gap */
+}
+
+/* No extra drop under the last one */
+.wizard-step:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Labels */
+.wizard-label {
+  font-size: 18px;         /* Larger */
+  margin-bottom: 10px;
+  color: #f0f0ff;
+}
+
+/* Dropdowns */
+.wizard-select {
+  width: 100%;
+  padding: 16px 18px;      /* Taller feel */
+  font-size: 18px;         /* Larger */
+  border-radius: 12px;
+
+  background: #1d1d2b;
+  border: 1px solid #373757;
+  color: white;
+
+  transition: 0.22s ease;
+}
+
+.wizard-select:focus {
+  border-color: #98a8ff;
+  background: #26263d;
+  box-shadow: 0 0 14px rgba(160, 180, 255, 0.45);
+}
+
+
+/* -----------------------------------------------------
+   RIGHT BOX — SUMMARY CARD (premium spacing B)
+   ----------------------------------------------------- */
+.wizard-summary-card {
+  width: 350px;
+  min-height: 352px;
+  padding: 36px 28px;  /* slightly more depth */
+  border-radius: 18px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Premium spacing B */
+
+  background: radial-gradient(circle at top left, #211932 0%, #14141f 40%, #0d0d14 100%);
+  border: 1px solid rgba(139, 92, 255, 0.55);
+  box-shadow:
+    0 12px 38px rgba(0,0,0,0.8),
+    0 0 24px rgba(139,92,255,0.38);
+}
+
+/* Spacing refinements */
+.summary-heading {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.summary-main {
+  line-height: 1.55;
+  font-size: 20px;
+}
+
+.summary-meta {
+  line-height: 1.55;
+  margin-top: -2px;
+  font-size: 17px;
+  color: #d7cffc;
+}
+
+/* Confirm button untouched (perfect sizing) */
+.wizard-confirm-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px;
+  border-radius: 10px;
+}
+
+/* Hide + show animation logic */
+.wizard-summary-card.hidden {
+  opacity: 0;
+  transform: translateX(22px) scale(0.97);
+  pointer-events: none;
+}
+
+.wizard-summary-card:not(.hidden) {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+
+/* ---------------------------------------------
+   ANIMATIONS — steps: fade + slide up (A)
+   summary: slide from right + scale (3)
+   --------------------------------------------- */
+
+
+
+/* Responsive tweak */
+@media (max-width: 900px) {
+  .wizard-shell {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 16px 18px;
+  }
+
+  .wizard-summary-wrapper {
+    width: 100%;
+  }
+
+  .wizard-summary-card {
+    margin: 0 auto;
+  }
+}
+
+
+/* ===========================================
+   FULLSCREEN SPLASH — Hybrid-C Premium Glow
+   =========================================== */
+
+#splash.splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: linear-gradient(
+    180deg,
+    #05040b 0%,
+    #07081a 40%,
+    #020208 100%
+  ) !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+
+  z-index: 9999;
+}
+
+
+/* Big Hybrid-C Ambient Glow */
+/* Tight glow ONLY around bike */
+.splash-glow {
+  position: absolute;
+  width: 240px;        /* tightly wraps bike width */
+  height: 240px;       /* tightly wraps bike height */
+  background: radial-gradient(
+    circle,
+    rgba(150, 120, 255, 0.55) 0%,
+    rgba(120, 90, 220, 0.25) 35%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(35px);  /* soft blended glow */
+  border-radius: 50%;
+  z-index: -1;
+
+  top: 50%;            /* centers glow behind bike */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* Bike Silhouette — soft neon halo */
+.splash-bike {
+  width: 260px;
+  height: auto;
+  opacity: 0.95;
+  filter:
+    drop-shadow(0 0 18px rgba(140, 120, 255, 0.45))
+    drop-shadow(0 0 28px rgba(100, 80, 255, 0.35));
+}
+
+.splash-text {
+  margin-top: 24px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.4px;
+
+  /* REMOVE all glow, blur, shadow */
+  text-shadow: none !important;
+
+  opacity: 1; /* full sharpness */
+}
+
+/* Prevent page from scrolling when a full-screen section is active */
+.screen, 
+.login-layout, 
+#loginPage {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* UNIFY ALL PAGES TO USE THE WIZARD DARK BACKGROUND */
+body,
+#loginPage,
+#fuelScreen,
+#dashboard,
+#vehicleWizard {
+  background: linear-gradient(
+    180deg,
+    #05040b 0%,
+    #07081a 40%,
+    #020208 100%
+  ) !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+/* Raise both wizard boxes upward equally */
+.wizard-steps-card {
+  transform-origin: top center;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.wizard-steps-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 28px rgba(0, 255, 255, 0.25);
+}
+
+
+.wizard-summary-card {
+  margin-top: -200px;   /* Perfect balanced lift */
+}
+/* Raise the entire fuel box upward */
+.fuel-box {
+  margin-top: -200px;   /* Same lift as wizard boxes */
+}
+/* ============================
+   DASHBOARD — Ride Controls + Summary
+   ============================ */
+
+
+/* ===========================================
+   RIDE BUTTONS — isolated from global .btn-primary
+   =========================================== */
+
+
+/* NEW: allow both Start & End to share equal space */
+.ride-btn {
+  flex: 1;
+  width: auto;
+
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+
+
+
+/* Start Ride = purple */
+.ride-btn-start {
+  background: linear-gradient(135deg, #8b5cff, #6f4bdb);
+  color: white;
+  border: none;
+  box-shadow:
+    0 0 15px rgba(139, 92, 255, 0.35),
+    0 10px 25px rgba(139, 92, 255, 0.25);
+}
+
+.ride-btn-start:hover {
+  box-shadow:
+    0 0 20px rgba(139, 92, 255, 0.5),
+    0 12px 28px rgba(139, 92, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+/* End Ride = modern grey pill */
+.ride-btn-end {
+  background: rgba(255, 255, 255, 0.12);
+  color: #eee;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.ride-btn-end:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* CENTER CARD: Ride Controls */
+/* EXPANDED RIDE CARD — uses ~70% screen */
+.ride-details-card {
+  width: 90%;
+  max-width: 1050px;
+
+  padding: 80px 90px;  
+  border-radius: 26px;
+
+  background: rgba(16, 16, 26, 0.68);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(110, 130, 255, 0.45);
+  box-shadow:
+    0 0 28px rgba(120, 140, 255, 0.28),
+    0 18px 45px rgba(0, 0, 0, 0.65),
+    inset 0 0 18px rgba(150, 160, 255, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.ride-icon-pill {
+  width: 80px;
+  height: 80px;
+  border-radius: 26px;
+  background: radial-gradient(circle at top, #9c7bff, #4a3b92);
+  box-shadow:
+    0 0 24px rgba(150, 120, 255, 0.6),
+    0 12px 30px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.ride-icon-emoji {
+  font-size: 32px;
+}
+
+.ride-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.ride-subtitle {
+  font-size: 14px;
+  color: #d0cff5;
+  max-width: 320px;
+  margin-bottom: 22px;
+}
+
+.ride-status-block {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.ride-status-label {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9a98d9;
+  margin-bottom: 4px;
+}
+
+.ride-status-value {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+
+.ride-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+.ride-primary {
+  flex: 1.2;
+}
+
+.ride-secondary {
+  flex: 1;
+}
+
+/* END RIDE — Matching Start Ride size + premium dark style */
+#endRideBtn {
+  flex: 1;
+  width: auto;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  text-align: center;
+
+  background: rgba(35, 35, 50, 0.9);
+  color: #eee;
+
+  border: 1px solid rgba(140, 120, 255, 0.25);
+
+  box-shadow:
+    0 0 10px rgba(0,0,0,0.4),
+    inset 0 0 8px rgba(140,120,255,0.15);
+
+  transition: 0.25s ease;
+}
+
+
+#endRideBtn:hover {
+  background: rgba(45, 45, 65, 0.95);
+  border-color: rgba(160,130,255,0.45);
+  box-shadow:
+    0 0 14px rgba(140,120,255,0.45),
+    inset 0 0 10px rgba(140,120,255,0.25);
+  transform: translateY(-2px);
+}
+/* ===========================================
+   NEW DASHBOARD LAYOUT (Clean 2–Page System)
+   =========================================== */
+
+:root{
+    --navbar-height:100px;   /* Change this if your navbar height changes */
+}
+
+.dashboard-layout{
+    position:fixed;
+    top:var(--navbar-height);
+    left:0;
+    right:0;
+    bottom:0;
+
+    overflow:hidden;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    padding-top: 22px;
+}
+
+/* Page headings */
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #e9e9ff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ----------- PAGE 1: RIDE CONTROLS ----------- */
+
+.ride-controls-page {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Ride card */
+.ride-card-new {
+  width: 100%;
+  max-width: 520px; 
+  padding: 36px 32px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(22px);
+  border: 1px solid rgba(160, 120, 255, 0.32);
+  box-shadow: 0 0 28px rgba(90, 20, 255, 0.46);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;   /* increased gap between elements */
+  text-align: center;
+  margin-top: 30px;
+}
+
+
+/* Status titles */
+.ride-status-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #e8e8ff;
+}
+
+
+.ride-status-hint {
+  font-size: 14px;
+  opacity: 0.75;
+  margin-top: -6px;
+}
+
+
+/* Blinking Indicator */
+#rideIndicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+#rideIndicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-bottom: 6px;
+}
+
+.indicator-off {
+  background: #444;
+  box-shadow: none;
+}
+
+.indicator-active {
+  background: #00ff88;
+  box-shadow: 0 0 12px #00ff88, 0 0 24px #00ff88;
+  animation: pulseGreen 0.9s infinite ease-in-out;
+}
+
+@keyframes pulseGreen {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.75); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Buttons row */
+.ride-btn-row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+
+.ride-btn {
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 14px;
+  cursor: pointer;
+  border: none;
+  transition: 0.25s ease;
+}
+
+
+.ride-btn-start {
+  background: #4dffcf;
+  color: #002018;
+  box-shadow: 0 0 10px #4dffcf;
+}
+
+
+.ride-btn-start:hover {
+  transform: translateY(-2px);
+}
+
+.ride-btn-end {
+  width: 100%;
+  padding: 20px 24px;
+  font-size: 22px;
+  font-weight: 800;
+  border-radius: 16px;
+  color: #eee;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 18px rgba(139, 92, 255, 0.25);
+}
+
+.ride-btn-end:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+
+.btn-secondary {
+  margin-top: 12px;
+  padding: 12px 20px;
+  font-weight: 600;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(200, 200, 255, 0.2);
+  color: #e9e9ff;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* ----------- PAGE 2: LIVE METRICS ----------- */
+
+.live-metrics-page {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.metrics-card-new {
+  width: 100%;
+  max-width: 680px;
+  padding: 36px 32px;
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(160, 120, 255, 0.35);
+  box-shadow: 0 0 30px rgba(90, 20, 255, 0.45);
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 40px;
+  margin-bottom: 40px;
+}
+
+.metric-item-new:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transition: 0.2s;
+}
+
+.metric-item-new {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(180, 130, 255, 0.22);
+  box-shadow: 0 0 12px rgba(120, 70, 255, 0.25) inset;
+}
+
+.metric-item-new span {
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.metric-item-new strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 22px;
+}
+
+#backFromControls {
+  margin-top: 20px;
+  width: 160px;
+  align-self: center;
+}
+.live-metrics-page {
+  animation: metricsGlow 1.4s ease-out forwards;
+}
+
+@keyframes metricsGlow {
+  0%   { box-shadow: 0 0 0px rgba(120, 70, 255, 0.0); }
+  100% { box-shadow: 0 0 26px rgba(120, 70, 255, 0.25); }
+}
+
+/* ============================
+   LOW FUEL ALERT BANNER
+   ============================ */
+.low-fuel-alert {
+  width: 100%;
+  max-width: 680px;
+  margin: 10px auto 20px auto;
+  padding: 14px 18px;
+  border-radius: 16px;
+
+  background: linear-gradient(135deg, #ff3b3b, #ff6b6b);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+
+  border: 1px solid rgba(255, 80, 80, 0.6);
+  box-shadow:
+    0 0 18px rgba(255, 70, 70, 0.45),
+    0 0 30px rgba(255, 70, 70, 0.25);
+
+  animation: fuelPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes fuelPulse {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(0.98); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+#loginPage,
+#vehicleWizard,
+#fuelScreen,
+#dashboard {
+    position: absolute;
+    inset: 0;
+}
+/* ==========================
+   Ride History
+========================== */
+
+.ride-history-list{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.ride-card{
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    transition:.25s;
+
+}
+
+.ride-card:hover{
+
+    transform:translateY(-2px);
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.ride-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.ride-title{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.ride-date{
+
+    color:#b8b8d0;
+
+    font-size:15px;
+
+}
+
+.ride-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:14px 40px;
+
+    margin-top:12px;
+
+}
+
+.ride-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+}
+
+.ride-label{
+
+    color:#a7a7c2;
+
+}
+
+.ride-value{
+
+    font-weight:700;
+
+}
+
+.view-ride-btn{
+
+    margin-top:20px;
+
+    width:100%;
+
+}
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+main{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+}
+
+#dashboard{
+    overflow:hidden;
+}
+
+#homePage{
+    overflow:hidden;
+}
+.action-icon{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.06);
+
+    color:#b08cff;
+
+}
+
+.action-icon svg{
+
+    width:24px;
+
+    height:24px;
+
+    stroke-width:2;
+
+}
+/* =========================
+   Header User
+========================= */
+
+.header-user{
+
+    margin-left:auto;
+
+    display:none;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.header-avatar{
+
+    width:34px;
+    height:34px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:linear-gradient(
+        135deg,
+        #8b5cff,
+        #6540e8
+    );
+
+    color:white;
+
+    font-size:14px;
+    font-weight:700;
+
+    box-shadow:
+        0 0 14px rgba(139,92,255,.28);
+
+}
+
+.header-user-name{
+
+    margin:0;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#dedff4;
+
+    letter-spacing:.1px;
+
+}
+body:has(#dashboard:not(.hidden)) .header-user{
+
+    display:flex;
+
+}
+/* Ride History - allow the history list to scroll */
+#rideHistoryPage {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}

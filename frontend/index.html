@@ -1,0 +1,604 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FuelMate v3 – Layout Skeleton</title>
+
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/home.css">
+  
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+<header class="header">
+
+  <div class="header-left">
+
+    <div class="logo-capsule">
+      <img
+        src="assets/fuelmate-logo-header.png"
+        class="app-logo"
+        alt="FuelMate Logo"
+      />
+    </div>
+
+    <span class="app-title">FuelMate</span>
+
+  </div>
+
+
+  <div class="header-user">
+
+    <div class="header-avatar">
+      V
+    </div>
+
+    <h1 id="homeUserName" class="header-user-name">
+      Vaibhav
+    </h1>
+
+  </div>
+
+</header>
+
+
+
+  <main>
+
+<!-- ============ LOGIN SCREEN (HYBRID-C DESIGN) ============ -->
+<section id="loginPage" class="login-layout">
+
+  <div class="login-container">
+
+    <!-- LEFT SIDE: Text -->
+    <div class="login-left">
+      <div class="login-left-content">
+        <h1 class="login-tagline">Ride Smarter</h1>
+        <h1 class="login-tagline">Track Better</h1>
+        <p class="login-subtitle">Smart fuel tracker & ride assistant</p>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: Login Box -->
+    <div class="login-right">
+      <div class="login-card">
+        <h2 class="login-heading">Sign in</h2>
+
+        <form id="loginForm">
+
+          <div class="form-row">
+            <label for="username">Email</label>
+            <input id="username" type="email" required />
+          </div>
+
+          <div class="form-row">
+            <label for="password">Password</label>
+            <input id="password" type="password" required />
+          </div>
+
+          <div class="remember-container">
+            <label class="remember-label">
+              <input id="rememberMe" type="checkbox" />
+              <span>Remember me</span>
+            </label>
+          </div>
+
+<button type="submit" class="login-btn-primary">Sign In</button>
+
+          <a href="#" class="link-forgot">Forgot password?</a>
+        </form>
+
+        <p class="login-note">(Local demo — no real auth)</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- ============ SPLASH SCREEN (CENTERED) ============ -->
+<div id="splash" class="splash hidden">
+  <div class="splash-glow"></div>
+  <img src="assets/bike-silhouette-white.png" class="splash-bike" />
+  <div id="splashMessage" class="splash-text">Setting up your dashboard...</div>
+</div>
+
+
+    <!-- ============ VEHICLE WIZARD ============ -->
+<section id="vehicleWizard" class="screen hidden">
+  <button id="backFromWizard" class="screen-back-btn">← Back</button>
+
+  <div class="wizard-grid">
+
+    <!-- LEFT SIDE: Steps -->
+    <div class="wizard-left">
+      <div class="wizard-steps-card">
+
+        <h2 class="wizard-title">Select Your 2-Wheeler</h2>
+        <p class="wizard-subtitle">Start with your brand, then model and year.</p>
+
+        <!-- STEP 1 -->
+        <div id="stepBrand" class="wizard-step">
+          <label class="wizard-label">Brand</label>
+          <select id="wizardBrandSelect" class="wizard-select">
+            <option value="">Select brand</option>
+          </select>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="stepModel" class="wizard-step hidden">
+          <label class="wizard-label">Model</label>
+          <select id="wizardModelSelect" class="wizard-select">
+            <option value="">Select model</option>
+          </select>
+        </div>
+
+        <!-- STEP 3 -->
+        <div id="stepYear" class="wizard-step hidden">
+          <label class="wizard-label">Year</label>
+          <select id="wizardYearSelect" class="wizard-select">
+            <option value="">Select year</option>
+          </select>
+        </div>
+
+      </div> <!-- end .wizard-steps-card -->
+    </div> <!-- end .wizard-left -->
+
+    <!-- RIGHT SIDE: Summary -->
+    <div class="wizard-right">
+      <div id="wizardSummary" class="wizard-summary-card hidden">
+        <h3 class="summary-heading">Selected Vehicle</h3>
+        <p class="summary-main" id="summaryTitle"></p>
+        <p class="summary-meta" id="summaryMileage"></p>
+        <p class="summary-meta" id="summaryTank"></p>
+
+        <button id="confirmWizard" class="btn-primary wizard-confirm-btn">
+          Confirm & Continue
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+    <!-- ============ FUEL INPUT (LEFT LAYOUT) ============ -->
+    <section id="fuelScreen" class="fuel-layout hidden">
+
+      <!-- Back: fuel -> wizard -->
+      <button id="backFromFuel" class="screen-back-btn">← Back</button>
+
+      <div class="fuel-box">
+
+        <h2>Enter Fuel</h2>
+
+        <p>Choose how you want to enter your fuel.</p>
+
+        <div class="fuel-mode-toggle">
+
+          <button
+            id="fuelModeLitres"
+            type="button"
+            class="fuel-mode-btn active">
+            Litres
+          </button>
+
+          <button
+            id="fuelModeRupees"
+            type="button"
+            class="fuel-mode-btn">
+            ₹ Amount
+          </button>
+
+        </div>
+
+
+        <!-- LITRES MODE -->
+
+        <div id="litresFuelInputGroup">
+
+          <label for="fuelInputLitres">
+            Fuel filled
+          </label>
+
+          <input
+            id="fuelInputLitres"
+            type="number"
+            step="0.1"
+            min="0"
+            placeholder="Enter litres"
+          />
+
+        </div>
+
+
+        <!-- RUPEES MODE -->
+
+        <div
+  id="rupeesFuelInputGroup"
+  class="hidden">
+
+  <label for="fuelInputRupees">
+    Amount paid
+  </label>
+
+  <input
+    id="fuelInputRupees"
+    type="number"
+    step="1"
+    min="0"
+    placeholder="Enter amount"
+  />
+
+  <div id="fuelPriceDisplay" class="fuel-price-display">
+    Fuel price: Loading...
+  </div>
+
+</div>
+
+
+        <button
+          id="fuelContinueBtn"
+          class="btn-primary">
+          Continue
+        </button>
+
+        <p id="fuelError" class="error hidden"></p>
+
+      </div>
+
+    </section>
+
+ <!-- ============ DASHBOARD ============ -->
+<section id="dashboard" class="dashboard-layout hidden">
+
+
+  <!-- -------------------------------------- -->
+<!-- PAGE 0 — HOME -->
+<!-- -------------------------------------- -->
+<section id="homePage" class="home-page hidden">
+
+    <!-- =========================
+         CURRENT VEHICLE
+    ========================== -->
+
+    <div class="vehicle-card">
+
+        <div class="vehicle-left">
+
+            <div class="vehicle-info">
+
+                <span class="vehicle-label">
+                    Current Vehicle
+                </span>
+
+                <h2 id="homeVehicle">
+                    Honda Activa 125
+                </h2>
+
+                <p class="vehicle-year">
+                    BS6 • 2023
+                </p>
+
+            </div>
+
+
+            <div class="vehicle-stats">
+
+                <div class="vehicle-stat">
+
+                    <span>
+                        Fuel Left
+                    </span>
+
+                    <h3 id="homeFuelLeft">
+                        2.6 L
+                    </h3>
+
+                </div>
+
+
+                <div class="vehicle-stat">
+
+                    <span>
+                        Estimated Range
+                    </span>
+
+                    <h3 id="homeRange">
+                        105 km
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="vehicle-right">
+
+            <img
+                id="vehicleImage"
+                class="vehicle-image"
+                src="assets/vehicles/activa125.png"
+                alt="Honda Activa 125"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         START RIDE
+    ========================== -->
+
+    <div class="ride-center">
+
+        <button
+        id="homeStartRideBtn"
+        class="start-circle">
+        </button>
+
+
+        <h2>
+            START RIDE
+        </h2>
+
+        <p>
+            Tap to begin tracking
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         QUICK ACTIONS
+    ========================== -->
+
+    <div class="actions-grid">
+
+        <button
+            id="homeFuelBtn"
+            class="action-card">
+
+            <div class="action-icon">
+                ⛽
+            </div>
+
+            <div>
+
+                <h3>
+                    Add Fuel
+                </h3>
+
+                <p>
+                    Log fuel refill
+                </p>
+
+            </div>
+
+        </button>
+
+
+        <button
+            id="homeHistoryBtn"
+            class="action-card">
+
+            <div class="action-icon">
+                📜
+            </div>
+
+            <div>
+
+                <h3>
+                    Ride History
+                </h3>
+
+                <p>
+                    Previous rides
+                </p>
+
+            </div>
+
+        </button>
+
+    </div>
+
+</section>
+  <!-- -------------------------------------- -->
+  <!-- PAGE 1 — RIDE CONTROLS PAGE            -->
+  <!-- -------------------------------------- -->
+  <section id="rideControlsPage" class="ride-controls-page hidden">
+
+    <h2 class="page-title">Ride Controls</h2>
+
+    <div class="ride-card-new">
+
+      <!-- Blinking Indicator -->
+      <div id="rideIndicator" class="indicator-off"></div>
+
+      <h3 class="ride-status-title" id="rideStatusText">Waiting to start</h3>
+      <p class="ride-status-hint" id="rideStatusHint">Press Start Ride to begin tracking.</p>
+
+      <div class="ride-btn-row">
+        <button id="startRideBtn" class="ride-btn ride-btn-start">Start Ride</button>
+        <button id="endRideBtn" class="ride-btn ride-btn-end hidden">End Ride</button>
+      </div>
+
+      <button id="goToMetricsBtn" class="btn-secondary hidden">View Metrics</button>
+      <button id="historyBtn" class="btn-secondary">Ride History</button>
+
+    </div>
+    <button id="backFromControls" class="btn-secondary">Back</button>
+
+  </section>
+
+  <!-- -------------------------------------- -->
+  <!-- PAGE 2 — LIVE METRICS PAGE             -->
+  <!-- -------------------------------------- -->
+  <section id="liveMetricsPage" class="live-metrics-page hidden">
+
+    <h2 class="page-title">Ride Metrics</h2>
+    <div id="lowFuelAlert" class="low-fuel-alert hidden">
+  ⚠️ Low Fuel — Consider Refueling Soon
+</div>
+
+
+    <div class="metrics-card-new">
+
+      <div class="metric-item-new">
+        <span>Distance</span>
+        <strong id="liveDistance">—</strong>
+      </div>
+
+      <div class="metric-item-new">
+        <span>Avg Speed</span>
+        <strong id="liveAvgSpeed">—</strong>
+      </div>
+
+      <div class="metric-item-new">
+        <span>Fuel Used</span>
+        <strong id="liveFuelUsed">—</strong>
+      </div>
+
+      <div class="metric-item-new">
+        <span>Fuel Left</span>
+        <strong id="liveFuelLeft">—</strong>
+      </div>
+
+      <div class="metric-item-new">
+        <span>Mileage</span>
+        <strong id="liveMileage">—</strong>
+      </div>
+
+      <div class="metric-item-new">
+        <span>Range Left</span>
+        <strong id="liveRange">—</strong>
+      </div>
+
+
+      <div class="metric-item-new">
+        <span>Duration</span>
+        <strong id="liveDuration">—</strong>
+      </div>
+
+    </div>
+     <!-- ⛽ NEARBY PETROL PUMPS (PASTE EXACTLY HERE) -->
+    <div id="fuelStationsBox" class="fuel-stations hidden">
+      <h3 id="fuelStationsTitle" style="cursor:pointer;">
+  ⛽ Nearby Petrol Pumps (Tap to Refresh)
+</h3>
+
+      <ul id="fuelStationsList"></ul>
+    </div>
+
+    <button id="backToControlsBtn" class="btn-secondary">Back to Controls</button>
+
+    </section> <!-- end liveMetricsPage -->
+    <!-- -------------------------------------- -->
+<!-- PAGE 3 — RIDE HISTORY -->
+<!-- -------------------------------------- -->
+  <section id="rideHistoryPage" class="live-metrics-page hidden">
+
+  <h2 class="page-title">Ride History</h2>
+
+  <div id="rideHistoryBody" class="ride-history-list">
+
+</div>
+
+  <button id="backFromHistoryBtn" class="btn-secondary">
+      Back
+  </button>
+
+</section> 
+<!-- -------------------------------------- -->
+<!-- PAGE 4 — RIDE DETAILS -->
+<!-- -------------------------------------- -->
+<section id="rideDetailsPage" class="live-metrics-page hidden">
+
+    <h2 class="page-title">Ride Details</h2>
+
+    <div class="ride-details-card">
+
+        <div class="ride-header">
+
+            <div>
+                <div class="ride-title" id="detailRideTitle">
+                    Ride
+                </div>
+
+                <div class="ride-date" id="detailRideDate">
+                    --
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="ride-grid">
+
+            <div class="ride-item">
+                <span class="ride-label">Distance</span>
+                <span class="ride-value" id="detailDistance">--</span>
+            </div>
+
+            <div class="ride-item">
+                <span class="ride-label">Fuel Used</span>
+                <span class="ride-value" id="detailFuelUsed">--</span>
+            </div>
+
+            <div class="ride-item">
+                <span class="ride-label">Average Speed</span>
+                <span class="ride-value" id="detailSpeed">--</span>
+            </div>
+
+            <div class="ride-item">
+                <span class="ride-label">Mileage</span>
+                <span class="ride-value" id="detailMileage">--</span>
+            </div>
+            <div class="ride-item">
+                <span class="ride-label">Fuel Left</span>
+                <span class="ride-value" id="detailFuelLeft">--</span>
+            </div>
+
+            <div class="ride-item">
+                <span class="ride-label">Duration</span>
+                <span class="ride-value" id="detailDuration">--</span>
+              </div>
+
+        </div>
+
+    </div>
+
+    <button id="backFromDetailsBtn" class="btn-secondary">
+        Back
+    </button>
+
+</section>
+
+</section> <!-- end dashboard -->
+
+</main>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-...."
+        crossorigin="anonymous"></script>
+<script src="scripts/fuel.js"></script>
+<script src="scripts/rides.js"></script>
+<script src="scripts/animations.js"></script>
+<script>
+    lucide.createIcons();
+</script>
+
+
+</body>
+</html>
